@@ -5,6 +5,8 @@ import com.bank.digitalwallet.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/wallet")
 public class WalletController {
@@ -30,5 +32,20 @@ public class WalletController {
 
         return walletService.getBalance(walletId);
 
+    }@PostMapping("/withdraw")
+    public Wallet withdrawMoney(@RequestBody Map<String, Object> request){
+        Long id = Long.valueOf(request.get("id").toString());
+        Double amount = Double.valueOf(request.get("amount").toString());
+
+        return walletService.withdrawMoney(id, amount);
     }
+    @PostMapping("/transfer")
+    public String transferMoney(@RequestBody Map<String, Object> request){
+        Long senderId = Long.valueOf(request.get("senderId").toString());
+        Long receiverId = Long.valueOf(request.get("receiverId").toString());
+        Double amount = Double.valueOf(request.get("amount").toString());
+
+        return walletService.transferMoney(senderId, receiverId, amount);
+    }
+
 }
