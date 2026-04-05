@@ -18,19 +18,13 @@ public class WalletService {
     private WalletRepository walletRepository;
 
     //Method to create new user and wallet
-    public Wallet createWallet(String name, String email){
-
-        User user = new User();
-        user.setName(name);
-        user.setEmail(email);
-
-        userRepository.save(user);
+    public Wallet createWallet(String ownerName){
 
         Wallet wallet = new Wallet();
-        wallet.setUser(user);
+        wallet.setOwnerName(ownerName);
         wallet.setBalance(0.0);
-
         return walletRepository.save(wallet);
+
     }
 
     public Wallet addMoney(Long walletId, Double amount){
