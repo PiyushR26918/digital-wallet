@@ -20,7 +20,6 @@ public class Wallet {
 
     private Double balance;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+
+    private String ownerName;
 }
