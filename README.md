@@ -12,3 +12,9 @@ Backend project built using Spring Boot.
 - Added withdraw functionality
 - Added transfer functionality between wallets
 - Implemented validation for insufficient balance
+  
+(Phase 3)
+- DTO-based request handling
+- Clean API responses using ResponseEntity
+- Global exception handling
+- Transaction-safe money transfer
